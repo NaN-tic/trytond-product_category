@@ -11,3 +11,11 @@ class Category:
     __name__ = "product.category"
     products = fields.Many2Many('product.template-product.category.all',
         'category', 'template', "Products", readonly=True)
+
+    @classmethod
+    def copy(cls, records, default=None):
+        if default is None:
+            default = {}
+        default = default.copy()
+        default['products'] = None
+        return super(Category, cls).copy(records, default=default)
