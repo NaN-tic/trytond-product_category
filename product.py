@@ -6,8 +6,7 @@ from trytond.model import fields
 __all__ = ['Category']
 
 
-class Category:
-    __metaclass__ = PoolMeta
+class Category(metaclass=PoolMeta):
     __name__ = "product.category"
     products = fields.Many2Many('product.template-product.category.all',
         'category', 'template', "Products", readonly=True)
